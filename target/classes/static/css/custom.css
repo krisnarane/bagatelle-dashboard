@@ -1,0 +1,154 @@
+/* custom.css - Identidade Visual Bagatelle Perfumaria */
+
+:root {
+    /* Paleta de Cores Inspirada na Marca */
+    --brand-marsala: #5c2a2d;      /* Cor do Texto do Logo (Vinho Escuro) */
+    --brand-salmon: #e88d72;       /* Cor do Ícone (Terracota/Salmão) */
+    --brand-salmon-light: #fcdbd1; /* Fundo suave */
+    --brand-bg: #fffcfb;           /* Off-white para o fundo do site */
+    
+    /* Sobrescrevendo Variáveis do Bootstrap */
+    --bs-primary: #e88d72;
+    --bs-primary-rgb: 232, 141, 114;
+    --bs-body-bg: var(--brand-bg);
+    --bs-link-color: #5c2a2d;
+    --bs-link-hover-color: #e88d72;
+}
+
+/* === Layout Geral === */
+body {
+    font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+    color: #4a4a4a;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: var(--brand-marsala);
+    font-weight: 600;
+}
+
+/* === Navbar (Topo) === */
+.navbar {
+    background-color: #5c2a2d !important;
+    box-shadow: 0 4px 12px rgba(92, 42, 45, 0.15);
+    padding-top: 0.8rem;
+    padding-bottom: 0.8rem;
+}
+
+.navbar-brand {
+    font-weight: 700;
+    font-size: 1.4rem;
+    color: rgb(255, 255, 255) !important;
+    letter-spacing: 1px;
+}
+
+.navbar-brand img {
+    filter: brightness(0) invert(1); /* Torna o logo branco para contrastar com o vinho */
+    transition: transform 0.3s ease;
+}
+
+.navbar-brand:hover img {
+    transform: scale(1.05);
+}
+
+.nav-link {
+    color: rgba(255,255,255,0.85) !important;
+    font-weight: 500;
+    transition: all 0.2s;
+}
+
+.nav-link:hover, .nav-link.active {
+    color: var(--brand-salmon) !important;
+    transform: translateY(-1px);
+}
+
+.navbar-text {
+    color: rgba(255,255,255,0.6) !important;
+    font-size: 0.9rem;
+}
+
+/* === Cards === */
+.card {
+    border: none;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+    background-color: white;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    overflow: hidden;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(92, 42, 45, 0.1);
+}
+
+.card-header {
+    background-color: white;
+    border-bottom: 2px solid var(--brand-salmon-light);
+    color: var(--brand-marsala);
+    font-weight: 700;
+    padding: 1rem 1.5rem;
+}
+
+/* Header colorido específico para destaques */
+.card-header.bg-primary {
+    background-color: var(--brand-salmon) !important;
+    border-bottom: none;
+}
+.card-header.bg-success { /* Ajuste para verde mais elegante */
+    background-color: #558b6e !important; 
+}
+.card-header.bg-info {
+    background-color: #6daedb !important;
+}
+
+/* === Botões === */
+.btn-primary {
+    background-color: var(--brand-salmon);
+    border-color: var(--brand-salmon);
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: #d67a5f; /* Um tom mais escuro do salmão */
+    border-color: #d67a5f;
+}
+
+.btn-outline-primary {
+    color: var(--brand-marsala);
+    border-color: var(--brand-marsala);
+}
+
+.btn-outline-primary:hover {
+    background-color: var(--brand-marsala);
+    border-color: var(--brand-marsala);
+    color: white;
+}
+
+/* === Tabelas === */
+.table thead th {
+    background-color: #fdf2ef; /* Fundo rosado bem claro */
+    color: var(--brand-marsala);
+    border-bottom: 2px solid var(--brand-salmon);
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    letter-spacing: 0.5px;
+}
+
+.table-hover tbody tr:hover {
+    background-color: #fff5f2;
+}
+
+/* === Ícones Específicos === */
+.text-warning {
+    color: #e6a63e !important; /* Dourado mais elegante */
+}
+.border-warning {
+    border-color: #e6a63e !important;
+}
+
+/* === Footer === */
+footer {
+    background-color: white !important;
+    border-top: 1px solid var(--brand-salmon-light) !important;
+    color: var(--brand-marsala);
+}

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${acao} + ' Cliente'">Formulário Cliente</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css" rel="stylesheet">
+    <link th:href="@{/css/custom.css}" rel="stylesheet">
+    <link rel="icon" th:href="@{/images/logo.png}" type="image/png">
+</head>
+<body>
+    <div th:replace="~{fragments/navbar :: navbar}"></div>
+
+    <main class="container mt-4">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header bg-primary text-white">
+                        <h4 class="mb-0">
+                            <i class="bi bi-person-fill me-2"></i>
+                            <span th:text="${acao} + ' Cliente'">Formulário Cliente</span>
+                        </h4>
+                    </div>
+                    <div class="card-body">
+                        <div th:if="${mensagemErro}" class="alert alert-danger">
+                            <i class="bi bi-exclamation-triangle-fill me-2"></i>
+                            <span th:text="${mensagemErro}"></span>
+                        </div>
+
+                        <form th:action="${cliente.id != null} ? @{/clientes/{id}(id=${cliente.id})} : @{/clientes}"
+                              method="post" th:object="${cliente}">
+
+                            <div class="mb-3">
+                                <label for="nomeCompleto" class="form-label">Nome Completo *</label>
+                                <input type="text" class="form-control" id="nomeCompleto"
+                                       th:field="*{nomeCompleto}" required maxlength="150">
+                                <div class="invalid-feedback" th:if="${#fields.hasErrors('nomeCompleto')}"
+                                     th:errors="*{nomeCompleto}"></div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="cpf" class="form-label">CPF *</label>
+                                    <input type="text" class="form-control" id="cpf"
+                                           th:field="*{cpf}" required pattern="\d{11}"
+                                           placeholder="Apenas números" maxlength="11">
+                                    <small class="form-text text-muted">Apenas números (11 dígitos)</small>
+                                </div>
+
+                                <div class="col-md-6 mb-3">
+                                    <label for="telefone" class="form-label">Telefone *</label>
+                                    <input type="text" class="form-control" id="telefone"
+                                           th:field="*{telefone}" required pattern="\d{10,11}"
+                                           placeholder="Apenas números" maxlength="11">
+                                    <small class="form-text text-muted">Apenas números (10 ou 11 dígitos)</small>
+                                </div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="email" class="form-label">Email *</label>
+                                <input type="email" class="form-control" id="email"
+                                       th:field="*{email}" required maxlength="150">
+                            </div>
+
+                            <div class="d-flex justify-content-between">
+                                <a th:href="@{/clientes}" class="btn btn-secondary">
+                                    <i class="bi bi-arrow-left me-2"></i>Voltar
+                                </a>
+                                <button type="submit" class="btn btn-primary">
+                                    <i class="bi bi-check-circle me-2"></i>
+                                    <span th:text="${acao}">Salvar</span>
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
