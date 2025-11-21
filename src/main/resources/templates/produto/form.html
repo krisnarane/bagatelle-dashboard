@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${acao} + ' Produto'">Formulário Produto</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css" rel="stylesheet">
+    <link th:href="@{/css/custom.css}" rel="stylesheet">
+    <link rel="icon" th:href="@{/images/logo.png}" type="image/png">
+</head>
+<body>
+    <div th:replace="~{fragments/navbar :: navbar}"></div>
+
+    <main class="container mt-4">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header bg-primary text-white">
+                        <h4 class="mb-0">
+                            <i class="bi bi-box-seam me-2"></i>
+                            <span th:text="${acao} + ' Produto'">Formulário Produto</span>
+                        </h4>
+                    </div>
+                    <div class="card-body">
+                        <form th:action="${produto.id != null} ? @{/produtos/{id}(id=${produto.id})} : @{/produtos}"
+                              method="post" th:object="${produto}">
+
+                            <div class="mb-3">
+                                <label for="nomePerfume" class="form-label">Nome do Perfume *</label>
+                                <input type="text" class="form-control" id="nomePerfume"
+                                       th:field="*{nomePerfume}" required maxlength="150">
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="marca" class="form-label">Marca *</label>
+                                    <input type="text" class="form-control" id="marca"
+                                           th:field="*{marca}" required maxlength="100">
+                                </div>
+
+                                <div class="col-md-6 mb-3">
+                                    <label for="volume" class="form-label">Volume *</label>
+                                    <input type="text" class="form-control" id="volume"
+                                           th:field="*{volume}" required maxlength="20"
+                                           placeholder="Ex: 50ml">
+                                </div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="precoVenda" class="form-label">Preço de Venda (R$) *</label>
+                                <input type="number" class="form-control" id="precoVenda"
+                                       th:field="*{precoVenda}" required step="0.01" min="0.01">
+                            </div>
+
+                            <div class="d-flex justify-content-between">
+                                <a th:href="@{/produtos}" class="btn btn-secondary">
+                                    <i class="bi bi-arrow-left me-2"></i>Voltar
+                                </a>
+                                <button type="submit" class="btn btn-primary">
+                                    <i class="bi bi-check-circle me-2"></i>
+                                    <span th:text="${acao}">Salvar</span>
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
